@@ -16,6 +16,7 @@
 		2B3216572DCF88FF00097DAC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B3216552DCF88FF00097DAC /* LaunchScreen.storyboard */; };
 		2B3216622DCF890600097DAC /* FlashScoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3216612DCF890600097DAC /* FlashScoreTests.swift */; };
 		2B32166D2DCF890C00097DAC /* FlashScoreUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B32166C2DCF890C00097DAC /* FlashScoreUITests.swift */; };
+		CBFDECE12DCFA21F00D5EB55 /* EwidaStoryBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBFDECE02DCFA21F00D5EB55 /* EwidaStoryBoard.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		2B3216682DCF890900097DAC /* FlashScoreUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlashScoreUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B32166C2DCF890C00097DAC /* FlashScoreUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashScoreUITests.swift; sourceTree = "<group>"; };
 		2B32166E2DCF890C00097DAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CBFDECE02DCFA21F00D5EB55 /* EwidaStoryBoard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EwidaStoryBoard.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 				2B3216552DCF88FF00097DAC /* LaunchScreen.storyboard */,
 				2B3216582DCF88FF00097DAC /* Info.plist */,
 				2B3216502DCF88B200097DAC /* FlashScore.xcdatamodeld */,
+				CBFDECE02DCFA21F00D5EB55 /* EwidaStoryBoard.storyboard */,
 			);
 			path = FlashScore;
 			sourceTree = "<group>";
@@ -234,6 +237,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CBFDECE12DCFA21F00D5EB55 /* EwidaStoryBoard.storyboard in Resources */,
 				2B3216572DCF88FF00097DAC /* LaunchScreen.storyboard in Resources */,
 				2B3216542DCF88FF00097DAC /* Assets.xcassets in Resources */,
 				2B32164F2DCF88A800097DAC /* Main.storyboard in Resources */,
