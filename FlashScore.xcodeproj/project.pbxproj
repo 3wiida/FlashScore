@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		2B3216482DCF88A700097DAC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3216472DCF88A700097DAC /* AppDelegate.swift */; };
 		2B32164A2DCF88A700097DAC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3216492DCF88A700097DAC /* SceneDelegate.swift */; };
-		2B32164C2DCF88A700097DAC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B32164B2DCF88A700097DAC /* ViewController.swift */; };
 		2B32164F2DCF88A800097DAC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B32164D2DCF88A800097DAC /* Main.storyboard */; };
 		2B3216522DCF88B200097DAC /* FlashScore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2B3216502DCF88B200097DAC /* FlashScore.xcdatamodeld */; };
 		2B3216542DCF88FF00097DAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B3216532DCF88FF00097DAC /* Assets.xcassets */; };
@@ -17,6 +16,9 @@
 		2B3216622DCF890600097DAC /* FlashScoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3216612DCF890600097DAC /* FlashScoreTests.swift */; };
 		2B32166D2DCF890C00097DAC /* FlashScoreUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B32166C2DCF890C00097DAC /* FlashScoreUITests.swift */; };
 		2BA9DF642DCFA376001A637F /* ZiadStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BA9DF632DCFA376001A637F /* ZiadStoryboard.storyboard */; };
+		CB9429772DD0DE1F00D59A91 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9429762DD0DE1F00D59A91 /* OnboardingViewController.swift */; };
+		CB94297A2DD0DE4D00D59A91 /* OnboardingSlide.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9429792DD0DE4D00D59A91 /* OnboardingSlide.swift */; };
+		CB94297C2DD0DFCA00D59A91 /* SlideCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB94297B2DD0DFCA00D59A91 /* SlideCollectionViewCell.swift */; };
 		CBFDECE12DCFA21F00D5EB55 /* EwidaStoryBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBFDECE02DCFA21F00D5EB55 /* EwidaStoryBoard.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -41,7 +43,6 @@
 		2B3216442DCF88A700097DAC /* FlashScore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlashScore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B3216472DCF88A700097DAC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2B3216492DCF88A700097DAC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		2B32164B2DCF88A700097DAC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		2B32164E2DCF88A800097DAC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2B3216512DCF88B200097DAC /* FlashScore.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FlashScore.xcdatamodel; sourceTree = "<group>"; };
 		2B3216532DCF88FF00097DAC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -54,6 +55,9 @@
 		2B32166C2DCF890C00097DAC /* FlashScoreUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashScoreUITests.swift; sourceTree = "<group>"; };
 		2B32166E2DCF890C00097DAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2BA9DF632DCFA376001A637F /* ZiadStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ZiadStoryboard.storyboard; sourceTree = "<group>"; };
+		CB9429762DD0DE1F00D59A91 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		CB9429792DD0DE4D00D59A91 /* OnboardingSlide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSlide.swift; sourceTree = "<group>"; };
+		CB94297B2DD0DFCA00D59A91 /* SlideCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideCollectionViewCell.swift; sourceTree = "<group>"; };
 		CBFDECE02DCFA21F00D5EB55 /* EwidaStoryBoard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EwidaStoryBoard.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -105,16 +109,13 @@
 		2B3216462DCF88A700097DAC /* FlashScore */ = {
 			isa = PBXGroup;
 			children = (
-				2B3216472DCF88A700097DAC /* AppDelegate.swift */,
-				2B3216492DCF88A700097DAC /* SceneDelegate.swift */,
-				2B32164B2DCF88A700097DAC /* ViewController.swift */,
-				2B32164D2DCF88A800097DAC /* Main.storyboard */,
-				2B3216532DCF88FF00097DAC /* Assets.xcassets */,
-				2B3216552DCF88FF00097DAC /* LaunchScreen.storyboard */,
+				CB9429812DD0E8FD00D59A91 /* Core */,
+				CB9429782DD0DE3000D59A91 /* Model */,
+				CB9429752DD0DDA200D59A91 /* Onboarding */,
+				CB9429742DD0DD9000D59A91 /* SupportFiles */,
+				CB9429732DD0DD7C00D59A91 /* App */,
 				2B3216582DCF88FF00097DAC /* Info.plist */,
 				2B3216502DCF88B200097DAC /* FlashScore.xcdatamodeld */,
-				2BA9DF632DCFA376001A637F /* ZiadStoryboard.storyboard */,
-				CBFDECE02DCFA21F00D5EB55 /* EwidaStoryBoard.storyboard */,
 			);
 			path = FlashScore;
 			sourceTree = "<group>";
@@ -135,6 +136,67 @@
 				2B32166E2DCF890C00097DAC /* Info.plist */,
 			);
 			path = FlashScoreUITests;
+			sourceTree = "<group>";
+		};
+		CB9429732DD0DD7C00D59A91 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				2B3216472DCF88A700097DAC /* AppDelegate.swift */,
+				2B3216492DCF88A700097DAC /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		CB9429742DD0DD9000D59A91 /* SupportFiles */ = {
+			isa = PBXGroup;
+			children = (
+				2B3216532DCF88FF00097DAC /* Assets.xcassets */,
+			);
+			path = SupportFiles;
+			sourceTree = "<group>";
+		};
+		CB9429752DD0DDA200D59A91 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				CB9429762DD0DE1F00D59A91 /* OnboardingViewController.swift */,
+				CB94297B2DD0DFCA00D59A91 /* SlideCollectionViewCell.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		CB9429782DD0DE3000D59A91 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CB94297E2DD0E8A900D59A91 /* test */,
+				CB94297D2DD0E89E00D59A91 /* Service */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CB94297D2DD0E89E00D59A91 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		CB94297E2DD0E8A900D59A91 /* test */ = {
+			isa = PBXGroup;
+			children = (
+				CB9429792DD0DE4D00D59A91 /* OnboardingSlide.swift */,
+			);
+			path = test;
+			sourceTree = "<group>";
+		};
+		CB9429812DD0E8FD00D59A91 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				2B32164D2DCF88A800097DAC /* Main.storyboard */,
+				2B3216552DCF88FF00097DAC /* LaunchScreen.storyboard */,
+				2BA9DF632DCFA376001A637F /* ZiadStoryboard.storyboard */,
+				CBFDECE02DCFA21F00D5EB55 /* EwidaStoryBoard.storyboard */,
+			);
+			path = Core;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -269,9 +331,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2B32164C2DCF88A700097DAC /* ViewController.swift in Sources */,
+				CB94297C2DD0DFCA00D59A91 /* SlideCollectionViewCell.swift in Sources */,
 				2B3216522DCF88B200097DAC /* FlashScore.xcdatamodeld in Sources */,
+				CB9429772DD0DE1F00D59A91 /* OnboardingViewController.swift in Sources */,
 				2B3216482DCF88A700097DAC /* AppDelegate.swift in Sources */,
+				CB94297A2DD0DE4D00D59A91 /* OnboardingSlide.swift in Sources */,
 				2B32164A2DCF88A700097DAC /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
