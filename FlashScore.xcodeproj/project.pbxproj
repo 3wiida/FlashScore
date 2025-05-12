@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -25,6 +25,9 @@
 		CBB85FFA2DD2104C00D4978B /* AllLeaguesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB85FF92DD2104C00D4978B /* AllLeaguesViewController.swift */; };
 		CBB85FFE2DD2112100D4978B /* LeagueResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB85FFD2DD2112100D4978B /* LeagueResponse.swift */; };
 		CBB860002DD211D500D4978B /* LeagueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB85FFF2DD211D500D4978B /* LeagueTableViewCell.swift */; };
+		CBB860032DD220BD00D4978B /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = CBB860022DD220BD00D4978B /* Alamofire */; };
+		CBB860062DD2213100D4978B /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = CBB860052DD2213100D4978B /* Kingfisher */; };
+		CBB860092DD221AA00D4978B /* ShimmerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = CBB860082DD221AA00D4978B /* ShimmerSwift */; };
 		CBFDECE12DCFA21F00D5EB55 /* EwidaStoryBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBFDECE02DCFA21F00D5EB55 /* EwidaStoryBoard.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -78,6 +81,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CBB860062DD2213100D4978B /* Kingfisher in Frameworks */,
+				CBB860092DD221AA00D4978B /* ShimmerSwift in Frameworks */,
+				CBB860032DD220BD00D4978B /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,6 +279,11 @@
 			dependencies = (
 			);
 			name = FlashScore;
+			packageProductDependencies = (
+				CBB860022DD220BD00D4978B /* Alamofire */,
+				CBB860052DD2213100D4978B /* Kingfisher */,
+				CBB860082DD221AA00D4978B /* ShimmerSwift */,
+			);
 			productName = FlashScore;
 			productReference = 2B3216442DCF88A700097DAC /* FlashScore.app */;
 			productType = "com.apple.product-type.application";
@@ -344,6 +355,11 @@
 				Base,
 			);
 			mainGroup = 2B32163B2DCF88A400097DAC;
+			packageReferences = (
+				CBB860012DD220BD00D4978B /* XCRemoteSwiftPackageReference "Alamofire" */,
+				CBB860042DD2213100D4978B /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				CBB860072DD221AA00D4978B /* XCRemoteSwiftPackageReference "ShimmerSwift" */,
+			);
 			productRefGroup = 2B3216452DCF88A700097DAC /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -727,6 +743,51 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CBB860012DD220BD00D4978B /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = exactVersion;
+				version = 5.4.4;
+			};
+		};
+		CBB860042DD2213100D4978B /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = exactVersion;
+				version = 5.15.8;
+			};
+		};
+		CBB860072DD221AA00D4978B /* XCRemoteSwiftPackageReference "ShimmerSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/BeauNouvelle/ShimmerSwift.git";
+			requirement = {
+				kind = exactVersion;
+				version = 2.2.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CBB860022DD220BD00D4978B /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CBB860012DD220BD00D4978B /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		CBB860052DD2213100D4978B /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CBB860042DD2213100D4978B /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+		CBB860082DD221AA00D4978B /* ShimmerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CBB860072DD221AA00D4978B /* XCRemoteSwiftPackageReference "ShimmerSwift" */;
+			productName = ShimmerSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		2B3216502DCF88B200097DAC /* FlashScore.xcdatamodeld */ = {
