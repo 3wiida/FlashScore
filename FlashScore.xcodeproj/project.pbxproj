@@ -15,6 +15,9 @@
 		2B3216572DCF88FF00097DAC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B3216552DCF88FF00097DAC /* LaunchScreen.storyboard */; };
 		2B3216622DCF890600097DAC /* FlashScoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3216612DCF890600097DAC /* FlashScoreTests.swift */; };
 		2B32166D2DCF890C00097DAC /* FlashScoreUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B32166C2DCF890C00097DAC /* FlashScoreUITests.swift */; };
+		2B399DB82DD0ECDA0019A943 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B399DB72DD0ECDA0019A943 /* HomeViewController.swift */; };
+		2B399DC22DD0F2090019A943 /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B399DC12DD0F2090019A943 /* HomeCollectionViewCell.swift */; };
+		2B399DCA2DD100E30019A943 /* Sport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B399DC92DD100E30019A943 /* Sport.swift */; };
 		2BA9DF642DCFA376001A637F /* ZiadStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BA9DF632DCFA376001A637F /* ZiadStoryboard.storyboard */; };
 		CB9429772DD0DE1F00D59A91 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9429762DD0DE1F00D59A91 /* OnboardingViewController.swift */; };
 		CB94297A2DD0DE4D00D59A91 /* OnboardingSlide.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9429792DD0DE4D00D59A91 /* OnboardingSlide.swift */; };
@@ -54,6 +57,9 @@
 		2B3216682DCF890900097DAC /* FlashScoreUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlashScoreUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B32166C2DCF890C00097DAC /* FlashScoreUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashScoreUITests.swift; sourceTree = "<group>"; };
 		2B32166E2DCF890C00097DAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2B399DB72DD0ECDA0019A943 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		2B399DC12DD0F2090019A943 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
+		2B399DC92DD100E30019A943 /* Sport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sport.swift; sourceTree = "<group>"; };
 		2BA9DF632DCFA376001A637F /* ZiadStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ZiadStoryboard.storyboard; sourceTree = "<group>"; };
 		CB9429762DD0DE1F00D59A91 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		CB9429792DD0DE4D00D59A91 /* OnboardingSlide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSlide.swift; sourceTree = "<group>"; };
@@ -109,6 +115,7 @@
 		2B3216462DCF88A700097DAC /* FlashScore */ = {
 			isa = PBXGroup;
 			children = (
+				2B399DB62DD0EC610019A943 /* Home */,
 				CB9429812DD0E8FD00D59A91 /* Core */,
 				CB9429782DD0DE3000D59A91 /* Model */,
 				CB9429752DD0DDA200D59A91 /* Onboarding */,
@@ -136,6 +143,23 @@
 				2B32166E2DCF890C00097DAC /* Info.plist */,
 			);
 			path = FlashScoreUITests;
+			sourceTree = "<group>";
+		};
+		2B399DB62DD0EC610019A943 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				2B399DBF2DD0F0D00019A943 /* View */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		2B399DBF2DD0F0D00019A943 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2B399DB72DD0ECDA0019A943 /* HomeViewController.swift */,
+				2B399DC12DD0F2090019A943 /* HomeCollectionViewCell.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		CB9429732DD0DD7C00D59A91 /* App */ = {
@@ -184,6 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				CB9429792DD0DE4D00D59A91 /* OnboardingSlide.swift */,
+				2B399DC92DD100E30019A943 /* Sport.swift */,
 			);
 			path = test;
 			sourceTree = "<group>";
@@ -332,11 +357,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB94297C2DD0DFCA00D59A91 /* SlideCollectionViewCell.swift in Sources */,
+				2B399DCA2DD100E30019A943 /* Sport.swift in Sources */,
 				2B3216522DCF88B200097DAC /* FlashScore.xcdatamodeld in Sources */,
 				CB9429772DD0DE1F00D59A91 /* OnboardingViewController.swift in Sources */,
 				2B3216482DCF88A700097DAC /* AppDelegate.swift in Sources */,
 				CB94297A2DD0DE4D00D59A91 /* OnboardingSlide.swift in Sources */,
+				2B399DB82DD0ECDA0019A943 /* HomeViewController.swift in Sources */,
 				2B32164A2DCF88A700097DAC /* SceneDelegate.swift in Sources */,
+				2B399DC22DD0F2090019A943 /* HomeCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

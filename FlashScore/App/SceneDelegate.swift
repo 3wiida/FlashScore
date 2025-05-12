@@ -18,14 +18,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
-        let storyboard = UIStoryboard(name: "EwidaStoryBoard", bundle: nil)
-        let initialViewController = storyboard.instantiateViewController(withIdentifier: "OnboardingVC")
+        let storyboard = UIStoryboard(name: "ZiadStoryboard", bundle: nil)
+        let initialViewController = storyboard.instantiateViewController(withIdentifier: "tab")
 
         let window = UIWindow(windowScene: windowScene)
         window.rootViewController = initialViewController
         self.window = window
         window.makeKeyAndVisible()
     }
+    
 
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.
