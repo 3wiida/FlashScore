@@ -19,7 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         let storyboard = UIStoryboard(name: "EwidaStoryBoard", bundle: nil)
-        let initialViewController = storyboard.instantiateViewController(withIdentifier: "OnboardingVC")
+        let initialViewController = storyboard.instantiateViewController(withIdentifier: "AllLeaguesVC")
 
         let window = UIWindow(windowScene: windowScene)
         window.rootViewController = initialViewController

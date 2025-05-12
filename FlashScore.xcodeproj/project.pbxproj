@@ -19,6 +19,9 @@
 		CB9429772DD0DE1F00D59A91 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9429762DD0DE1F00D59A91 /* OnboardingViewController.swift */; };
 		CB94297A2DD0DE4D00D59A91 /* OnboardingSlide.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9429792DD0DE4D00D59A91 /* OnboardingSlide.swift */; };
 		CB94297C2DD0DFCA00D59A91 /* SlideCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB94297B2DD0DFCA00D59A91 /* SlideCollectionViewCell.swift */; };
+		CBB85FFA2DD2104C00D4978B /* AllLeaguesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB85FF92DD2104C00D4978B /* AllLeaguesViewController.swift */; };
+		CBB85FFE2DD2112100D4978B /* LeagueResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB85FFD2DD2112100D4978B /* LeagueResponse.swift */; };
+		CBB860002DD211D500D4978B /* LeagueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB85FFF2DD211D500D4978B /* LeagueTableViewCell.swift */; };
 		CBFDECE12DCFA21F00D5EB55 /* EwidaStoryBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBFDECE02DCFA21F00D5EB55 /* EwidaStoryBoard.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +61,9 @@
 		CB9429762DD0DE1F00D59A91 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		CB9429792DD0DE4D00D59A91 /* OnboardingSlide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSlide.swift; sourceTree = "<group>"; };
 		CB94297B2DD0DFCA00D59A91 /* SlideCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideCollectionViewCell.swift; sourceTree = "<group>"; };
+		CBB85FF92DD2104C00D4978B /* AllLeaguesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllLeaguesViewController.swift; sourceTree = "<group>"; };
+		CBB85FFD2DD2112100D4978B /* LeagueResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeagueResponse.swift; sourceTree = "<group>"; };
+		CBB85FFF2DD211D500D4978B /* LeagueTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeagueTableViewCell.swift; sourceTree = "<group>"; };
 		CBFDECE02DCFA21F00D5EB55 /* EwidaStoryBoard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EwidaStoryBoard.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -109,6 +115,7 @@
 		2B3216462DCF88A700097DAC /* FlashScore */ = {
 			isa = PBXGroup;
 			children = (
+				CBB85FF62DD20FF400D4978B /* AllLeagues */,
 				CB9429812DD0E8FD00D59A91 /* Core */,
 				CB9429782DD0DE3000D59A91 /* Model */,
 				CB9429752DD0DDA200D59A91 /* Onboarding */,
@@ -184,6 +191,7 @@
 			isa = PBXGroup;
 			children = (
 				CB9429792DD0DE4D00D59A91 /* OnboardingSlide.swift */,
+				CBB85FFD2DD2112100D4978B /* LeagueResponse.swift */,
 			);
 			path = test;
 			sourceTree = "<group>";
@@ -197,6 +205,31 @@
 				CBFDECE02DCFA21F00D5EB55 /* EwidaStoryBoard.storyboard */,
 			);
 			path = Core;
+			sourceTree = "<group>";
+		};
+		CBB85FF62DD20FF400D4978B /* AllLeagues */ = {
+			isa = PBXGroup;
+			children = (
+				CBB85FF82DD2101500D4978B /* View */,
+				CBB85FF72DD2100D00D4978B /* Presenter */,
+			);
+			path = AllLeagues;
+			sourceTree = "<group>";
+		};
+		CBB85FF72DD2100D00D4978B /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		CBB85FF82DD2101500D4978B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CBB85FF92DD2104C00D4978B /* AllLeaguesViewController.swift */,
+				CBB85FFF2DD211D500D4978B /* LeagueTableViewCell.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -331,9 +364,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CBB85FFA2DD2104C00D4978B /* AllLeaguesViewController.swift in Sources */,
 				CB94297C2DD0DFCA00D59A91 /* SlideCollectionViewCell.swift in Sources */,
 				2B3216522DCF88B200097DAC /* FlashScore.xcdatamodeld in Sources */,
 				CB9429772DD0DE1F00D59A91 /* OnboardingViewController.swift in Sources */,
+				CBB860002DD211D500D4978B /* LeagueTableViewCell.swift in Sources */,
+				CBB85FFE2DD2112100D4978B /* LeagueResponse.swift in Sources */,
 				2B3216482DCF88A700097DAC /* AppDelegate.swift in Sources */,
 				CB94297A2DD0DE4D00D59A91 /* OnboardingSlide.swift in Sources */,
 				2B32164A2DCF88A700097DAC /* SceneDelegate.swift in Sources */,
