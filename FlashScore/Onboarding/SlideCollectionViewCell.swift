@@ -11,9 +11,11 @@ class SlideCollectionViewCell: UICollectionViewCell {
     
     static let identifier = "SlideCollectionViewCell"
     
-    @IBOutlet weak private var slideDescriptionLabel: UILabel!
-    @IBOutlet weak private var slideTitleLabel: UILabel!
     @IBOutlet weak private var slideImageView: UIImageView!
+    
+    @IBOutlet weak var slideTitleLabel: UILabel!
+    
+    @IBOutlet weak var slideDescriptionLabel: UILabel!
     
     func setupCell(slide: OnboardingSlide){
         slideImageView.image = UIImage(named: slide.imageName)
