@@ -12,14 +12,7 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        let hasCompletedOnboarding = UserDefaults.standard.value(forKey: OnboardingViewController.hasCompletedOnboardingKey) as? Bool ?? false
-        Thread.sleep(forTimeInterval: 2)
-        if hasCompletedOnboarding {
-            print("completed")
-        }else{
-            print("Not completed")
-        }
-        
+
         return true
     }
 
