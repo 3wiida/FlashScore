@@ -31,6 +31,8 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
             layout.minimumInteritemSpacing = 10
             layout.minimumLineSpacing = 16
         }
+        
+        self.navigationItem.title = "Home"
     }
     
     // MARK: - UICollectionViewDataSource
@@ -70,5 +72,13 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
 
         return CGSize(width: width, height: height)
         //return CGSize(width: 80, height: 80)
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("clicked")
+        let allLeaguesVC = storyboard?.instantiateViewController(withIdentifier: "AllLeaguesVC") as! AllLeaguesViewController
+
+        allLeaguesVC.sportType = .FOOTBALL
+        self.navigationController?.pushViewController(allLeaguesVC, animated: true)
     }
 }

@@ -15,15 +15,15 @@ protocol AllLeaguesViewControllerContract {
 
 class AllLeaguesViewController: UIViewController {
 
-    @IBOutlet weak var leaguesTableView: UITableView!
-    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
-    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak private var leaguesTableView: UITableView!
+    @IBOutlet weak private var loadingIndicator: UIActivityIndicatorView!
+    @IBOutlet weak private var searchBar: UISearchBar!
     
-    let presenter: AllLeaguesPresenterContract = AllLeaguesPresenter()
+    private let presenter: AllLeaguesPresenterContract = AllLeaguesPresenter()
     
-    var leagues: [League] = []
-    var searchResults: [League] = []
-    var searchQuery:String = ""
+    private var leagues: [League] = []
+    private var searchResults: [League] = []
+    private var searchQuery:String = ""
     var sportType: SportType = .FOOTBALL
     
     override func viewDidLoad() {
@@ -32,6 +32,7 @@ class AllLeaguesViewController: UIViewController {
         presenter.attachViewController(view: self)
         presenter.getAllLeagues(sportType: sportType)
         setupSearchBar()
+        self.navigationItem.title = "All Leagues"
     }
     
     func setupSearchBar() {
