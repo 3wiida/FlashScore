@@ -11,7 +11,9 @@ class HomeCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var sportLabel: UILabel!
     @IBOutlet weak var sportImg: UIImageView!
+    
     override class func awakeFromNib() {
         super.awakeFromNib()
     }
+    
 }

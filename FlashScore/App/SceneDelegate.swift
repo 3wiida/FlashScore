@@ -20,8 +20,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
 //        guard let windowScene = (scene as? UIWindowScene) else { return }
 //
-//        let storyboard = UIStoryboard(name: "ZiadStoryboard", bundle: nil)
-//        let initialViewController = storyboard.instantiateViewController(withIdentifier: "tab")
+//        let storyboard = UIStoryboard(name: "EwidaStoryBoard", bundle: nil)
+//        let initialViewController = storyboard.instantiateViewController(withIdentifier: "AllLeaguesVC")
 //
 //        let window = UIWindow(windowScene: windowScene)
 //        window.rootViewController = initialViewController
@@ -29,9 +29,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //        window.makeKeyAndVisible()
         
         guard let windowScene = (scene as? UIWindowScene) else { return }
-            
+
         let hasCompletedOnboarding = UserDefaults.standard.bool(forKey: OnboardingViewController.hasCompletedOnboardingKey)
-        
+
         Thread.sleep(forTimeInterval: 2)
 
         let window = UIWindow(windowScene: windowScene)

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class LeagueTableViewCell: UITableViewCell {
 
@@ -27,7 +28,17 @@ class LeagueTableViewCell: UITableViewCell {
     }
     
     func setupCell(league: League){
-        leagueLogoImageView.image = UIImage(named: "app_icon") //Remember to modify this after adding king fisher
+        leagueLogoImageView.kf.setImage(
+            with: URL(string: league.league_logo ?? ""),
+            placeholder: UIImage(named: "app_icon"),
+            options: nil,
+            progressBlock: {_,_ in
+                
+            },
+            completionHandler: { _ in
+                
+            }
+        )
         leagueNameLabel.text = league.league_name
         leagueCountryLabel.text = league.country_name
     }
