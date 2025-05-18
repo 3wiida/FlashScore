@@ -77,7 +77,19 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("clicked")
         let allLeaguesVC = storyboard?.instantiateViewController(withIdentifier: "AllLeaguesVC") as! AllLeaguesViewController
-
+        switch indexPath.row{
+        case 0:
+            allLeaguesVC.sportType = .FOOTBALL
+            break
+        case 1:
+            allLeaguesVC.sportType = .BASKETBALL
+            break
+        case 2:
+            allLeaguesVC.sportType = .TENNIS
+            break
+        default:
+            allLeaguesVC.sportType = .CRICKET
+        }
         allLeaguesVC.sportType = .FOOTBALL
         self.navigationController?.pushViewController(allLeaguesVC, animated: true)
     }
