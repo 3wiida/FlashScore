@@ -68,6 +68,7 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
 
         let totalSpacing = (2 * padding) + ((columns - 1) * spacing)
         let width = (collectionView.bounds.width - totalSpacing) / columns
+
         let height = (collectionView.bounds.height - totalSpacing) / columns - 60
 
         return CGSize(width: width, height: height)
@@ -90,7 +91,7 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
         default:
             allLeaguesVC.sportType = .CRICKET
         }
-        allLeaguesVC.sportType = .FOOTBALL
+        allLeaguesVC.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(allLeaguesVC, animated: true)
     }
 }

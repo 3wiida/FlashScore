@@ -78,6 +78,14 @@ extension AllLeaguesViewController : UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let leagueDetailsVC = self.storyboard?.instantiateViewController(withIdentifier: "LeagueDetailsVC") as! LeagueDetailsCollectionViewController
+        leagueDetailsVC.sportType = sportType
+        leagueDetailsVC.leagueId = "\(leagues[indexPath.row].league_key)"
+        
+        self.navigationController?.pushViewController(leagueDetailsVC, animated: true)
+    }
 }
 
 extension AllLeaguesViewController: AllLeaguesViewControllerContract {
