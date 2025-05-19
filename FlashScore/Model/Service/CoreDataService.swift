@@ -7,18 +7,21 @@
 
 import UIKit
 import CoreData
+
 class CoreDataService {
     var context:NSManagedObjectContext!
     var entity:NSEntityDescription!
     
-    static let shared=CoreDataService()
-    private init(){
+    static let shared = CoreDataService()
+    
+    private init() {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-                    fatalError("Unable to get AppDelegate")
-                }
+            fatalError("Unable to get AppDelegate")
+        }
         context = appDelegate.persistentContainer.viewContext
         entity = NSEntityDescription.entity(forEntityName: "FavouritesLeagues", in: context)
     }
+    
     func getLeagues(handler: @escaping ([League], Error?) -> Void) {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "FavouritesLeagues")
         
@@ -71,5 +74,44 @@ class CoreDataService {
         }
     }
 
+    func saveLeague(_ league: League, completion: @escaping (Bool, Error?) -> Void) {
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "FavouritesLeagues")
+        fetchRequest.predicate = NSPredicate(format: "league_key == %d", league.league_key)
+
+        do {
+            let existing = try context.fetch(fetchRequest)
+            if existing.isEmpty {
+                if let entity = entity {
+                    let obj = NSManagedObject(entity: entity, insertInto: context)
+                    obj.setValue(league.league_key,   forKey: "league_key")
+                    obj.setValue(league.league_name,  forKey: "league_name")
+                    obj.setValue(league.country_name, forKey: "country_name")
+                    obj.setValue(league.league_logo,  forKey: "league_logo")
+                }
+            } else {
+                completion(true, nil)
+                return
+            }
+
+            try context.save()
+            completion(true, nil)
+
+        } catch {
+            context.rollback()
+            completion(false, error)
+        }
+    }
     
+    func isLeagueExists(key: Int) -> Bool {
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "FavouritesLeagues")
+        fetchRequest.predicate = NSPredicate(format: "league_key == %d", key)
+        fetchRequest.fetchLimit = 1
+
+        do {
+            let count = try context.count(for: fetchRequest)
+            return count > 0
+        } catch {
+            return false
+        }
+    }
 }

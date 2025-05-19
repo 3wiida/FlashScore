@@ -82,8 +82,7 @@ extension AllLeaguesViewController : UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let leagueDetailsVC = self.storyboard?.instantiateViewController(withIdentifier: "LeagueDetailsVC") as! LeagueDetailsCollectionViewController
         leagueDetailsVC.sportType = sportType
-        leagueDetailsVC.leagueId = "\(leagues[indexPath.row].league_key)"
-        
+        leagueDetailsVC.league = leagues[indexPath.row]
         self.navigationController?.pushViewController(leagueDetailsVC, animated: true)
     }
 }
