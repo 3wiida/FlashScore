@@ -11,6 +11,7 @@ protocol LeagueDetailsViewContract {
     func onUpcomingMatchesAvailable(matches: [CommonMatch])
     func onLatestMatchesAvailable(matches: [CommonMatch])
     func onTeamsAvailable(teams: [CommonTeam])
+    func onFavStateUpdated(isFav: Bool)
     func showErrorMessage(error: Error)
 }
 
@@ -21,21 +22,23 @@ class LeagueDetailsCollectionViewController: UICollectionViewController {
     private var upcomingMatches: [CommonMatch] = []
     private var latestMatches: [CommonMatch] = []
     private var teams: [CommonTeam] = []
-
+    
     var sportType = SportType.FOOTBALL
-    var leagueId = "141"
     var isFavorite = true
+    var league: League!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "Fixtures"
+        isFavorite = presenter.isLeagueSaved(leagueKey: league.league_key)
         
         configureHeartButton()
         setupCollectionView()
         
         presenter.attachViewController(view: self)
-        presenter.fetchUpcomingMatches(sportType: sportType, leagueId: leagueId)
-        presenter.fetchLatestMatches(sportType: sportType, leagueId: leagueId)
-        presenter.fetchLeagueTeams(sportType: sportType, leagueId: leagueId)
+        presenter.fetchUpcomingMatches(sportType: sportType, leagueId: "\(league.league_key)")
+        presenter.fetchLatestMatches(sportType: sportType, leagueId: "\(league.league_key)")
+        presenter.fetchLeagueTeams(sportType: sportType, leagueId: "\(league.league_key)")
     }
 
     private func configureHeartButton() {
@@ -51,7 +54,11 @@ class LeagueDetailsCollectionViewController: UICollectionViewController {
     }
     
     @objc private func onFavClicked(){
-        
+        if isFavorite {
+            presenter.removeLeagueFromFav(key: league.league_key)
+        }else {
+            presenter.addLeagueToFav(league: league)
+        }
     }
 }
 
@@ -71,6 +78,11 @@ extension LeagueDetailsCollectionViewController: LeagueDetailsViewContract {
         self.collectionView.reloadData()
     }
     
+    func onFavStateUpdated(isFav: Bool) {
+        isFavorite = isFav
+        configureHeartButton()
+    }
+    
     func showErrorMessage(error: Error) {
         let errorAlert = UIAlertController(
             title: "Error",
@@ -79,9 +91,9 @@ extension LeagueDetailsCollectionViewController: LeagueDetailsViewContract {
         )
         
         let retryAction = UIAlertAction(title: "Retry", style: .default) { [weak self] _ in
-            self?.presenter.fetchUpcomingMatches(sportType: self?.sportType ?? .FOOTBALL, leagueId: self?.leagueId ?? "141")
-            self?.presenter.fetchLatestMatches(sportType: self?.sportType ?? .FOOTBALL, leagueId: self?.leagueId ?? "141")
-            self?.presenter.fetchLeagueTeams(sportType: self?.sportType ?? .FOOTBALL, leagueId: self?.leagueId ?? "141")
+            self?.presenter.fetchUpcomingMatches(sportType: self?.sportType ?? .FOOTBALL, leagueId: "\(self?.league.league_key ?? 141)")
+            self?.presenter.fetchLatestMatches(sportType: self?.sportType ?? .FOOTBALL, leagueId: "\(self?.league.league_key ?? 141)")
+            self?.presenter.fetchLeagueTeams(sportType: self?.sportType ?? .FOOTBALL, leagueId: "\(self?.league.league_key ?? 141)")
         }
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .destructive, handler: nil)

@@ -93,8 +93,8 @@
 		CB7AA9122DDA1EA200F322F3 /* LeagueMatchCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LeagueMatchCollectionViewCell.xib; sourceTree = "<group>"; };
 		CB7AA9132DDA1EA200F322F3 /* LeagueMatchCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeagueMatchCollectionViewCell.swift; sourceTree = "<group>"; };
 		CB7AA9142DDA1EA200F322F3 /* LeagueDetailsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeagueDetailsCollectionViewController.swift; sourceTree = "<group>"; };
-		CB7AA91D2DDA1EEB00F322F3 /* LeagueTeamsResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LeagueTeamsResponse.swift; path = "../../../../../FlashScore 2/FlashScore/Model/Entitiy/LeagueTeamsResponse.swift"; sourceTree = "<group>"; };
-		CB7AA91E2DDA1EEB00F322F3 /* LeagueMatchesResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LeagueMatchesResponse.swift; path = "../../../../../FlashScore 2/FlashScore/Model/Entitiy/LeagueMatchesResponse.swift"; sourceTree = "<group>"; };
+		CB7AA91D2DDA1EEB00F322F3 /* LeagueTeamsResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeagueTeamsResponse.swift; sourceTree = "<group>"; };
+		CB7AA91E2DDA1EEB00F322F3 /* LeagueMatchesResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeagueMatchesResponse.swift; sourceTree = "<group>"; };
 		CB8BE8552DD3576E0042C693 /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
 		CB8BE8582DD358CB0042C693 /* SportType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportType.swift; sourceTree = "<group>"; };
 		CB8BE85A2DD35A880042C693 /* AllLeaguesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllLeaguesPresenter.swift; sourceTree = "<group>"; };
@@ -249,8 +249,7 @@
 			children = (
 				CB7AA90D2DDA1EA200F322F3 /* LeagueDetailsPresenter.swift */,
 			);
-			name = Presenter;
-			path = "../../../../FlashScore 2/FlashScore/LeagueDetails/Presenter";
+			path = Presenter;
 			sourceTree = "<group>";
 		};
 		CB7AA90E2DDA1EA200F322F3 /* View */ = {
@@ -263,8 +262,7 @@
 				CB7AA9132DDA1EA200F322F3 /* LeagueMatchCollectionViewCell.swift */,
 				CB7AA9142DDA1EA200F322F3 /* LeagueDetailsCollectionViewController.swift */,
 			);
-			name = View;
-			path = "../../../../FlashScore 2/FlashScore/LeagueDetails/View";
+			path = View;
 			sourceTree = "<group>";
 		};
 		CB8BE8572DD358BF0042C693 /* Enums */ = {

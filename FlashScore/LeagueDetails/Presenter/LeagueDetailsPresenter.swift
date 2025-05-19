@@ -12,6 +12,10 @@ protocol LeagueDetailsPresenterContract {
     func fetchLatestMatches(sportType: SportType, leagueId:String)
     func fetchLeagueTeams(sportType: SportType, leagueId:String)
     
+    func isLeagueSaved(leagueKey: Int) -> Bool
+    func addLeagueToFav(league: League)
+    func removeLeagueFromFav(key: Int)
+    
     func attachViewController(view: LeagueDetailsViewContract)
 }
 
@@ -200,4 +204,24 @@ class LeagueDetailsPresenter : LeagueDetailsPresenterContract {
         self.leagueDetailsView = view
     }
     
+    
+    func isLeagueSaved(leagueKey: Int) -> Bool {
+        return CoreDataService.shared.isLeagueExists(key: leagueKey)
+    }
+    
+    func addLeagueToFav(league: League) {
+        CoreDataService.shared.saveLeague(league) { isSuccess, error in
+            if isSuccess {
+                self.leagueDetailsView?.onFavStateUpdated(isFav: true)
+            }
+        }
+    }
+    
+    func removeLeagueFromFav(key: Int) {
+        CoreDataService.shared.deleteLeague(withKey: key) { isSuccess in
+            if isSuccess {
+                self.leagueDetailsView?.onFavStateUpdated(isFav: false)
+            }
+        }
+    }
 }
