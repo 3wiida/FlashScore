@@ -1,0 +1,266 @@
+//
+//  LeagueDetailsCollectionViewController.swift
+//  FlashScore
+//
+//  Created by 3wiida on 16/05/2025.
+//
+
+import UIKit
+
+protocol LeagueDetailsViewContract {
+    func onUpcomingMatchesAvailable(matches: [CommonMatch])
+    func onLatestMatchesAvailable(matches: [CommonMatch])
+    func onTeamsAvailable(teams: [CommonTeam])
+    func showErrorMessage(error: Error)
+}
+
+class LeagueDetailsCollectionViewController: UICollectionViewController {
+    
+    private let presenter = LeagueDetailsPresenter()
+    
+    private var upcomingMatches: [CommonMatch] = []
+    private var latestMatches: [CommonMatch] = []
+    private var teams: [CommonTeam] = []
+
+    var sportType = SportType.FOOTBALL
+    var leagueId = "141"
+    var isFavorite = true
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.navigationItem.title = "Fixtures"
+        
+        configureHeartButton()
+        setupCollectionView()
+        
+        presenter.attachViewController(view: self)
+        presenter.fetchUpcomingMatches(sportType: sportType, leagueId: leagueId)
+        presenter.fetchLatestMatches(sportType: sportType, leagueId: leagueId)
+        presenter.fetchLeagueTeams(sportType: sportType, leagueId: leagueId)
+    }
+
+    private func configureHeartButton() {
+        let heartImageName = isFavorite ? "heart.fill" : "heart"
+        let heartButton = UIBarButtonItem(
+            image: UIImage(systemName: heartImageName),
+            style: .plain,
+            target: self,
+            action: #selector(onFavClicked)
+        )
+        heartButton.tintColor = .red
+        navigationItem.rightBarButtonItem = heartButton
+    }
+    
+    @objc private func onFavClicked(){
+        
+    }
+}
+
+extension LeagueDetailsCollectionViewController: LeagueDetailsViewContract {
+    func onUpcomingMatchesAvailable(matches: [CommonMatch]) {
+        self.upcomingMatches = matches
+        self.collectionView.reloadData()
+    }
+    
+    func onLatestMatchesAvailable(matches: [CommonMatch]) {
+        self.latestMatches = matches
+        self.collectionView.reloadData()
+    }
+    
+    func onTeamsAvailable(teams: [CommonTeam]) {
+        self.teams = teams
+        self.collectionView.reloadData()
+    }
+    
+    func showErrorMessage(error: Error) {
+        let errorAlert = UIAlertController(
+            title: "Error",
+            message: error.localizedDescription,
+            preferredStyle: .alert
+        )
+        
+        let retryAction = UIAlertAction(title: "Retry", style: .default) { [weak self] _ in
+            self?.presenter.fetchUpcomingMatches(sportType: self?.sportType ?? .FOOTBALL, leagueId: self?.leagueId ?? "141")
+            self?.presenter.fetchLatestMatches(sportType: self?.sportType ?? .FOOTBALL, leagueId: self?.leagueId ?? "141")
+            self?.presenter.fetchLeagueTeams(sportType: self?.sportType ?? .FOOTBALL, leagueId: self?.leagueId ?? "141")
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .destructive, handler: nil)
+        
+        errorAlert.addAction(retryAction)
+        errorAlert.addAction(cancelAction)
+        
+        self.present(errorAlert, animated: true)
+    }
+    
+    
+}
+
+private extension LeagueDetailsCollectionViewController {
+    func setupCollectionView() {
+        collectionView.register(UINib(nibName: "LeagueMatchCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "MatchCell")
+        collectionView.register(UINib(nibName: "LeagueMatchCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "MatchCell")
+        collectionView.register(UINib(nibName: "LeagueTeamCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "LeagueTeamCell")
+        
+        collectionView.register(SectionHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SectionHeaderView.reuseIdentifier)
+        
+        let layout = UICollectionViewCompositionalLayout { sectionIndex, _ in
+            switch sectionIndex {
+                case 0: return self.drawUpcomingMatchesSection()
+                case 1: return self.drawLatestMatchesSection()
+                case 2: return self.drawTeamsSection()
+                default: return self.drawTeamsSection()
+            }
+        }
+        collectionView.setCollectionViewLayout(layout, animated: true)
+    }
+}
+
+extension LeagueDetailsCollectionViewController : UICollectionViewDelegateFlowLayout {
+    
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 3
+    }
+
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        switch section {
+        case 0:
+            return upcomingMatches.count
+        case 1:
+            return latestMatches.count
+        case 2:
+            return teams.count
+        default:
+            return 0
+        }
+    }
+
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        switch indexPath.section {
+            case 0:
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MatchCell", for: indexPath) as! LeagueMatchCollectionViewCell
+                cell.setup(match: upcomingMatches[indexPath.row], isUpcoming: true)
+                return cell
+            case 1:
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MatchCell", for: indexPath) as! LeagueMatchCollectionViewCell
+                cell.setup(match: latestMatches[indexPath.row], isUpcoming: false)
+                return cell
+            case 2:
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LeagueTeamCell", for: indexPath) as! LeagueTeamCollectionViewCell
+                cell.setup(team: teams[indexPath.row])
+                return cell
+            default:
+                fatalError("Unexpected section")
+        }
+    }
+    
+    
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        guard kind == UICollectionView.elementKindSectionHeader else {
+            fatalError("Unsupported kind")
+        }
+
+        let header = collectionView.dequeueReusableSupplementaryView(
+            ofKind: kind,
+            withReuseIdentifier: SectionHeaderView.reuseIdentifier,
+            for: indexPath
+        ) as! SectionHeaderView
+
+        switch indexPath.section {
+            case 0:
+                header.titleLabel.text = "Upcoming Matches"
+            case 1:
+                header.titleLabel.text = "Latest Matches"
+            case 2:
+                header.titleLabel.text = "Teams"
+            default:
+                header.titleLabel.text = ""
+        }
+
+        return header
+    }
+    
+}
+
+
+private extension LeagueDetailsCollectionViewController {
+    
+    func drawUpcomingMatchesSection() -> NSCollectionLayoutSection {
+        let itemSize = NSCollectionLayoutSize(
+            widthDimension: .absolute(380),
+            heightDimension: .fractionalHeight(1.0)
+        )
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+
+        let groupSize = NSCollectionLayoutSize(
+            widthDimension: .estimated(380),
+            heightDimension: .absolute(280)
+        )
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+
+        let section = NSCollectionLayoutSection(group: group)
+        section.orthogonalScrollingBehavior = .continuous
+        section.interGroupSpacing = 16
+        section.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 24, bottom: 16, trailing: 24)
+        
+        section.boundarySupplementaryItems = [createHeader()]
+        
+        return section
+    }
+
+    func drawLatestMatchesSection() -> NSCollectionLayoutSection {
+        let itemSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1.0),
+            heightDimension: .absolute(280)
+        )
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        item.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8)
+
+        let groupSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1.0),
+            heightDimension: .estimated(280)
+        )
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item, item])
+
+        let section = NSCollectionLayoutSection(group: group)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 16, bottom: 16, trailing: 16)
+
+        section.boundarySupplementaryItems = [createHeader()]
+        
+        return section
+    }
+    
+    func drawTeamsSection() -> NSCollectionLayoutSection {
+        let itemSize = NSCollectionLayoutSize(
+            widthDimension: .absolute(190),
+            heightDimension: .fractionalHeight(1.0)
+        )
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+
+        let groupSize = NSCollectionLayoutSize(
+            widthDimension: .estimated(190),
+            heightDimension: .absolute(200)
+        )
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+
+        let section = NSCollectionLayoutSection(group: group)
+        section.orthogonalScrollingBehavior = .continuous
+      
+        section.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 24, bottom: 16, trailing: 0)
+        
+        section.boundarySupplementaryItems = [createHeader()]
+        
+        return section
+    }
+    
+    func createHeader() -> NSCollectionLayoutBoundarySupplementaryItem {
+        let headerSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1.0),
+            heightDimension: .absolute(40)
+        )
+        return NSCollectionLayoutBoundarySupplementaryItem(
+            layoutSize: headerSize,
+            elementKind: UICollectionView.elementKindSectionHeader,
+            alignment: .top
+        )
+    }
+}
