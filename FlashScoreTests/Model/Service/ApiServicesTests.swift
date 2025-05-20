@@ -58,4 +58,60 @@ class ApiServicesTests : XCTestCase {
 
         waitForExpectations(timeout: 5)
     }
+    func testFetchTeamDetails(){
+        //Given
+        let exp = expectation(description: "Get Details")
+        let teamId="96"
+        let sportType:SportType = .FOOTBALL
+        
+        //When
+        ApiServiceImpl.fetchTeamDetails(sportType: sportType, teamId: teamId) { (response, error) in
+            //Then
+            if let error = error {
+                XCTFail("Request failed – \(error)")
+            } else {
+                XCTAssertNotNil(response, "Response is nil")
+                XCTAssertFalse(response!.result.isEmpty)
+            }
+            exp.fulfill()
+        }
+        waitForExpectations(timeout: 5)
+    }
+    func testFetchTennisPlayerDetails(){
+        //Given
+        let exp = expectation(description: "Get tennis player Details")
+        let playerId="1905"
+        
+        //When
+        ApiServiceImpl.fetchTennisPlayerDetails(playerId: playerId){ (response, error) in
+            //Then
+            if let error = error {
+                XCTFail("Request failed – \(error)")
+            } else {
+                XCTAssertNotNil(response, "Response is nil")
+                XCTAssertFalse(response!.result.isEmpty)
+            }
+            exp.fulfill()
+        }
+        waitForExpectations(timeout: 5)
+    }
+    func testLeagueTeams(){
+        //Given
+        let exp = expectation(description: "Get Teams")
+        let sport: SportType = .FOOTBALL
+        let leagueID = "141"
+        //When
+        ApiServiceImpl.fetchLeagueTeams(sportType: sport, leagueId: leagueID, responseType: FootballLeagueTeamsResponse.self) { (response, error) in
+            
+            //Then
+            if let error = error {
+                XCTFail("Request failed – \(error)")
+            } else {
+                XCTAssertNotNil(response, "Response is nil")
+                XCTAssertFalse(response!.result.isEmpty)
+            }
+            exp.fulfill()
+        }
+        waitForExpectations(timeout: 5)
+    }
 }
