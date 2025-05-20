@@ -18,16 +18,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         
         
-//        guard let windowScene = (scene as? UIWindowScene) else { return }
-//
-//        let storyboard = UIStoryboard(name: "EwidaStoryBoard", bundle: nil)
-//        let initialViewController = storyboard.instantiateViewController(withIdentifier: "AllLeaguesVC")
-//
-//        let window = UIWindow(windowScene: windowScene)
-//        window.rootViewController = initialViewController
-//        self.window = window
-//        window.makeKeyAndVisible()
-        
+        guard let windowScene = (scene as? UIWindowScene) else { return }
+
+        let storyboard = UIStoryboard(name: "ZiadStoryboard", bundle: nil)
+        let initialViewController = storyboard.instantiateViewController(withIdentifier: "tennisPlayerDetails")
+
+        let window = UIWindow(windowScene: windowScene)
+        window.rootViewController = initialViewController
+        self.window = window
+        window.makeKeyAndVisible()
+        /*
         guard let windowScene = (scene as? UIWindowScene) else { return }
 
         let hasCompletedOnboarding = UserDefaults.standard.bool(forKey: OnboardingViewController.hasCompletedOnboardingKey)
@@ -46,7 +46,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
 
         self.window = window
-        window.makeKeyAndVisible()
+        window.makeKeyAndVisible()*/
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

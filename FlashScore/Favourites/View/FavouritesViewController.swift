@@ -31,11 +31,13 @@ class FavouritesViewController: UIViewController {
         super.viewDidLoad()
         loadingIndicator.startAnimating()
         presenter.attachViewController(viewController: self)
-        presenter.getFavourites()
         setupSearchBar()
         self.navigationItem.title = "Favourites"
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        presenter.getFavourites()
+    }
     func setupSearchBar() {
         searchBar.backgroundImage = UIImage()
 

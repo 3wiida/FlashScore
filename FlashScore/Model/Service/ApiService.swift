@@ -9,6 +9,8 @@ import Alamofire
 
 protocol ApiService {
     static func fetchAllLeagues(sportType: SportType, completion: @escaping (LeagueResponse?, Error?) -> Void)
+    static func fetchTeamDetails(sportType: SportType,teamId:String, completion: @escaping (TeamResponse?, Error?) -> Void)
+    
 }
 
 
@@ -65,4 +67,31 @@ class ApiServiceImpl : ApiService {
             }
         }
     }
+    
+    
+    static func fetchTeamDetails(sportType: SportType, teamId: String, completion: @escaping (TeamResponse?, Error?) -> Void) {
+        let url = "https://apiv2.allsportsapi.com/\(sportType.lowercaseName)/?met=Teams&teamId=\(teamId)&APIkey=\(API_KEY)"
+      
+        AF.request(url).responseDecodable(of: TeamResponse.self) { response in
+            switch response.result {
+            case .success(let response):
+                completion(response, nil)
+            case .failure(let error):
+                completion(nil, error)
+            }
+        }
+    }
+    static func fetchTennisPlayerDetails(playerId: String, completion: @escaping (TennisPlayerResponse?, Error?) -> Void) {
+        let url = "https://apiv2.allsportsapi.com/tennis/?met=Players&playerId=\(playerId)&APIkey=\(API_KEY)"
+      
+        AF.request(url).responseDecodable(of: TennisPlayerResponse.self) { response in
+            switch response.result {
+            case .success(let response):
+                completion(response, nil)
+            case .failure(let error):
+                completion(nil, error)
+            }
+        }
+    }
+
 }
