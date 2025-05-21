@@ -77,6 +77,7 @@ class ApiServicesTests : XCTestCase {
         }
         waitForExpectations(timeout: 5)
     }
+    
     func testFetchTennisPlayerDetails(){
         //Given
         let exp = expectation(description: "Get tennis player Details")
@@ -95,6 +96,7 @@ class ApiServicesTests : XCTestCase {
         }
         waitForExpectations(timeout: 5)
     }
+    
     func testLeagueTeams(){
         //Given
         let exp = expectation(description: "Get Teams")

@@ -24,7 +24,7 @@ class LeagueDetailsPresenter : LeagueDetailsPresenterContract {
     private var leagueDetailsView: LeagueDetailsViewContract? = nil
     
     func fetchUpcomingMatches(sportType: SportType, leagueId: String) {
-        /*
+        
         let formatter = DateFormatter()
         formatter.calendar = Calendar(identifier: .iso8601)
         formatter.locale = Locale(identifier: "en_US_POSIX")
@@ -76,11 +76,11 @@ class LeagueDetailsPresenter : LeagueDetailsPresenterContract {
                         )
                     }
             }
-        }*/
+        }
     }
     
     func fetchLatestMatches(sportType: SportType, leagueId: String) {
-        /*
+        
         let formatter = DateFormatter()
         formatter.calendar = Calendar(identifier: .iso8601)
         formatter.locale = Locale(identifier: "en_US_POSIX")
@@ -133,11 +133,11 @@ class LeagueDetailsPresenter : LeagueDetailsPresenterContract {
                     )
                 }
             }
-        }*/
+        }
     }
     
     func fetchLeagueTeams(sportType: SportType, leagueId: String) {
-        /*ApiServiceImpl.fetchLeagueTeams(
+        ApiServiceImpl.fetchLeagueTeams(
             sportType: sportType,
             leagueId: leagueId,
             responseType: getTeamsResponseType(sportType: sportType)
@@ -172,7 +172,7 @@ class LeagueDetailsPresenter : LeagueDetailsPresenterContract {
                     }) ?? [])
                 }
             }
-        }*/
+        }
     }
     
     private func getMatchesResponseType(sportType: SportType) -> Decodable.Type {

@@ -191,6 +191,22 @@ extension LeagueDetailsCollectionViewController : UICollectionViewDelegateFlowLa
         return header
     }
     
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if indexPath.section == 2 {
+            switch sportType {
+            case .FOOTBALL, .BASKETBALL, .CRICKET:
+                let teamDetailsVC = storyboard?.instantiateViewController(withIdentifier: "teamDetailsVC") as! TeamDetailsViewController
+                teamDetailsVC.sportType = sportType
+                teamDetailsVC.teamId = "\(teams[indexPath.row].team_key)"
+                self.navigationController?.pushViewController(teamDetailsVC, animated: true)
+            case .TENNIS:
+                let playerDetailsVC = storyboard?.instantiateViewController(withIdentifier: "tennisPlayerDetailsVC") as! TennisPlayerViewController
+                playerDetailsVC.playerId = "\(teams[indexPath.row].team_key)"
+                self.navigationController?.pushViewController(playerDetailsVC, animated: true)
+            }
+        }
+    }
 }
 
 
