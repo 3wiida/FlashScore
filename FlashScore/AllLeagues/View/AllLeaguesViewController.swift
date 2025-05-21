@@ -82,7 +82,7 @@ extension AllLeaguesViewController : UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let leagueDetailsVC = self.storyboard?.instantiateViewController(withIdentifier: "LeagueDetailsVC") as! LeagueDetailsCollectionViewController
         leagueDetailsVC.sportType = sportType
-        leagueDetailsVC.league = leagues[indexPath.row]
+        leagueDetailsVC.league = searchQuery.isEmpty ? leagues[indexPath.row] : searchResults[indexPath.row]
         self.navigationController?.pushViewController(leagueDetailsVC, animated: true)
     }
 }

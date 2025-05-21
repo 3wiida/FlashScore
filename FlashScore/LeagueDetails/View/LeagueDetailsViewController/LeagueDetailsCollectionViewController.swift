@@ -25,6 +25,9 @@ class LeagueDetailsCollectionViewController: UICollectionViewController {
     
     var sportType = SportType.FOOTBALL
     var isFavorite = true
+    var isUpcomingMatchesLoading = true
+    var isLatestMatchesLoading = true
+    var isTeamsLoading = true
     var league: League!
     
     override func viewDidLoad() {
@@ -64,16 +67,19 @@ class LeagueDetailsCollectionViewController: UICollectionViewController {
 
 extension LeagueDetailsCollectionViewController: LeagueDetailsViewContract {
     func onUpcomingMatchesAvailable(matches: [CommonMatch]) {
+        self.isUpcomingMatchesLoading = false
         self.upcomingMatches = matches
         self.collectionView.reloadData()
     }
     
     func onLatestMatchesAvailable(matches: [CommonMatch]) {
+        self.isLatestMatchesLoading = false
         self.latestMatches = matches
         self.collectionView.reloadData()
     }
     
     func onTeamsAvailable(teams: [CommonTeam]) {
+        isTeamsLoading = false
         self.teams = teams
         self.collectionView.reloadData()
     }
@@ -112,6 +118,8 @@ private extension LeagueDetailsCollectionViewController {
         collectionView.register(UINib(nibName: "LeagueMatchCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "MatchCell")
         collectionView.register(UINib(nibName: "LeagueMatchCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "MatchCell")
         collectionView.register(UINib(nibName: "LeagueTeamCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "LeagueTeamCell")
+        collectionView.register(UINib(nibName: "EmptyStateCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "EmptyStateCell")
+        collectionView.register(UINib(nibName: "LoadingStateCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "LoadingStateCell")
         
         collectionView.register(SectionHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SectionHeaderView.reuseIdentifier)
         
@@ -136,11 +144,11 @@ extension LeagueDetailsCollectionViewController : UICollectionViewDelegateFlowLa
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch section {
         case 0:
-            return upcomingMatches.count
+            return upcomingMatches.isEmpty ? 1 : upcomingMatches.count
         case 1:
-            return latestMatches.count
+            return latestMatches.isEmpty ? 1 : latestMatches.count
         case 2:
-            return teams.count
+            return teams.isEmpty ? 1 : teams.count
         default:
             return 0
         }
@@ -149,17 +157,43 @@ extension LeagueDetailsCollectionViewController : UICollectionViewDelegateFlowLa
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch indexPath.section {
             case 0:
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MatchCell", for: indexPath) as! LeagueMatchCollectionViewCell
-                cell.setup(match: upcomingMatches[indexPath.row], isUpcoming: true)
-                return cell
+                if isUpcomingMatchesLoading {
+                    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LoadingStateCell", for: indexPath)
+                    return cell
+                }else {
+                    if upcomingMatches.isEmpty {
+                        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EmptyStateCell", for: indexPath)
+                        return cell
+                    }else{
+                        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MatchCell", for: indexPath) as! LeagueMatchCollectionViewCell
+                        cell.setup(match: upcomingMatches[indexPath.row], isUpcoming: true)
+                        return cell
+                    }
+                }
             case 1:
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MatchCell", for: indexPath) as! LeagueMatchCollectionViewCell
-                cell.setup(match: latestMatches[indexPath.row], isUpcoming: false)
-                return cell
+                if isLatestMatchesLoading {
+                    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LoadingStateCell", for: indexPath)
+                    return cell
+                } else {
+                    if latestMatches.isEmpty {
+                        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EmptyStateCell", for: indexPath)
+                        return cell
+                    }else {
+                        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MatchCell", for: indexPath) as! LeagueMatchCollectionViewCell
+                        cell.setup(match: latestMatches[indexPath.row], isUpcoming: false)
+                        return cell
+                    }
+                }
+                
             case 2:
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LeagueTeamCell", for: indexPath) as! LeagueTeamCollectionViewCell
-                cell.setup(team: teams[indexPath.row])
-                return cell
+                if isTeamsLoading {
+                    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LoadingStateCell", for: indexPath)
+                    return cell
+                }else {
+                    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LeagueTeamCell", for: indexPath) as! LeagueTeamCollectionViewCell
+                    cell.setup(team: teams[indexPath.row])
+                    return cell
+                }
             default:
                 fatalError("Unexpected section")
         }

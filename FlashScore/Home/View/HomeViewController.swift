@@ -15,7 +15,7 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
         Sport(name: "Football", img: "football"),
         Sport(name: "BasketBall", img: "basketball"),
         Sport(name: "Tennis", img: "tennis"),
-        Sport(name: "Cricket", img: "cricket")
+        Sport(name: "Cricket", img: "cricket_img")
     ]
     
     override func viewDidLoad() {

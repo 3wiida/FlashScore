@@ -21,7 +21,7 @@ class PlayerViewCell: UITableViewCell {
     func setup(player:Player){
         playerImg.layer.cornerRadius=playerImg.frame.width/2
         playerImg.clipsToBounds=true
-        playerImg.kf.setImage(with: URL(string: player.player_image),placeholder: UIImage(named: "player"))
+        playerImg.kf.setImage(with: URL(string: player.player_image ?? ""),placeholder: UIImage(named: "player"))
         playerName.text=player.player_name
         playerType.text=player.player_type
         playerNumber.text=player.player_number

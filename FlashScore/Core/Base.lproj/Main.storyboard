@@ -98,7 +98,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="LIc-1E-E2Y" kind="relationship" relationship="viewControllers" id="66F-SF-LcM"/>
-                        <segue destination="g1j-ip-a6q" kind="relationship" relationship="viewControllers" id="fMn-gf-mmb"/>
+                        <segue destination="Vwg-rz-DUy" kind="relationship" relationship="viewControllers" id="fMn-gf-mmb"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SF4-Ku-ARf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -432,16 +432,16 @@
             </objects>
             <point key="canvasLocation" x="3159" y="1"/>
         </scene>
-        <!--Favourite-->
+        <!--Favourites View Controller-->
         <scene sceneID="gsw-rb-jDa">
             <objects>
                 <viewController storyboardIdentifier="Favs" id="g1j-ip-a6q" customClass="FavouritesViewController" customModule="FlashScore" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TOz-ph-Nfn">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="804"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" indicatorStyle="black" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="myf-28-N6z">
-                                <rect key="frame" x="24" y="136" width="366" height="653"/>
+                                <rect key="frame" x="24" y="88" width="366" height="609"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="separatorColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -532,7 +532,7 @@
                                 </connections>
                             </tableView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="T84-Db-EqL">
-                                <rect key="frame" x="179" y="420" width="56" height="56"/>
+                                <rect key="frame" x="179" y="374" width="56" height="56"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="3yp-mj-JaL"/>
                                     <constraint firstAttribute="width" constant="56" id="Qvb-2X-6Rk"/>
@@ -540,7 +540,7 @@
                                 <color key="color" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </activityIndicatorView>
                             <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Search for league..." translatesAutoresizingMaskIntoConstraints="NO" id="8O3-oj-VC0">
-                                <rect key="frame" x="12" y="64" width="390" height="56"/>
+                                <rect key="frame" x="12" y="16" width="390" height="56"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" name="MainColor"/>
                                 <color key="barTintColor" systemColor="systemRedColor"/>
@@ -564,16 +564,16 @@
                             <constraint firstItem="8O3-oj-VC0" firstAttribute="top" secondItem="DJp-Ru-Jng" secondAttribute="top" constant="16" id="vIS-0J-D8r"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Favourite" image="heart.fill" catalog="system" id="bDR-3p-Coh"/>
+                    <navigationItem key="navigationItem" id="afy-qT-AVE"/>
                     <connections>
                         <outlet property="leaguesTableView" destination="myf-28-N6z" id="b3t-c6-5Aj"/>
                         <outlet property="loadingIndicator" destination="T84-Db-EqL" id="2Dv-br-99m"/>
-                        <outlet property="searchBar" destination="8O3-oj-VC0" id="p2g-aM-8db"/>
+                        <outlet property="searchBar" destination="8O3-oj-VC0" id="3z1-uD-ooO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eF1-PI-Wlw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="397" y="711"/>
+            <point key="canvasLocation" x="1305.7971014492755" y="710.49107142857144"/>
         </scene>
         <!--Team Details View Controller-->
         <scene sceneID="4MT-Lh-YtD">
@@ -586,11 +586,17 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NRQ-2i-A8i">
                                 <rect key="frame" x="16" y="48" width="382" height="120"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hMw-PG-ren">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hMw-PG-ren">
                                         <rect key="frame" x="8" y="8" width="120" height="104"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="120" id="6lP-8V-btc"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="60"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.clipToBounds" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Real Madrid" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pug-ZU-LXo">
                                         <rect key="frame" x="136" y="35.5" width="238" height="29"/>
@@ -806,6 +812,12 @@
                                         <constraints>
                                             <constraint firstAttribute="width" constant="112" id="y7P-zX-t3G"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="56"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.clipToBounds" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Helaly" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mK9-RV-yBJ">
                                         <rect key="frame" x="128" y="49.5" width="238" height="29"/>
@@ -886,13 +898,13 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Matches won" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fQu-HK-4gU">
-                                        <rect key="frame" x="108.5" y="82" width="101.5" height="21"/>
+                                        <rect key="frame" x="108.5" y="82" width="101" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="16" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B7Y-vm-mbU">
-                                        <rect key="frame" x="226" y="82" width="40" height="21"/>
+                                        <rect key="frame" x="225.5" y="82" width="40" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="40" id="2Cz-wE-gv8"/>
                                         </constraints>
@@ -937,7 +949,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ljl-Mw-84b">
                                 <rect key="frame" x="107" y="365" width="200" height="200"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KRd-eb-byc">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="trophy" translatesAutoresizingMaskIntoConstraints="NO" id="KRd-eb-byc">
                                         <rect key="frame" x="16" y="16" width="168" height="100"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="CAY-B7-lDe"/>
@@ -999,7 +1011,31 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pM9-jP-Rsd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3996" y="393"/>
+            <point key="canvasLocation" x="3996" y="390"/>
+        </scene>
+        <!--Favourite-->
+        <scene sceneID="i5x-GK-rvv">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Vwg-rz-DUy" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Favourite" image="heart.fill" catalog="system" id="bDR-3p-Coh"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="Bfg-Fc-8jm">
+                        <rect key="frame" x="0.0" y="48" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="g1j-ip-a6q" kind="relationship" relationship="rootViewController" id="EUm-qA-r1T"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0IW-Zs-bTM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="395.6521739130435" y="710.49107142857144"/>
         </scene>
     </scenes>
     <resources>
@@ -1008,6 +1044,7 @@
         <image name="house" catalog="system" width="128" height="104"/>
         <image name="ic_right_arrow" width="800" height="800"/>
         <image name="player" width="32" height="32"/>
+        <image name="trophy" width="32" height="32"/>
         <namedColor name="CardColor">
             <color red="0.14117647058823529" green="0.14117647058823529" blue="0.18431372549019609" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

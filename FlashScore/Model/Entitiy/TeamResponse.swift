@@ -12,21 +12,21 @@ struct TeamResponse: Codable{
 }
 
 struct Team: Codable {
-    let team_key:Int
-    let team_name:String
-    let team_logo:String
+    let team_key:Int?
+    let team_name:String?
+    let team_logo:String?
     let players:[Player]?
     let coaches:[Coach]?
     
 }
 struct Player: Codable {
-    let player_name:String
-    let player_image:String
-    let player_number:String
-    let player_type:String
+    let player_name:String?
+    let player_image:String?
+    let player_number:String?
+    let player_type:String?
 }
 struct Coach:Codable {
-    let coach_name:String
+    let coach_name:String?
     let coach_country:String?
     let coach_age:String?
 }

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="LoadingStateCell" id="gTV-IL-0wX" customClass="LoadingStateCollectionViewCell" customModule="FlashScore" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="355" height="231"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="355" height="231"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0FB-4d-dZK">
+                        <rect key="frame" x="0.0" y="0.0" width="355" height="231"/>
+                        <subviews>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="w3o-IV-bLM">
+                                <rect key="frame" x="167.66666666666666" y="105.66666666666667" width="20" height="20"/>
+                                <color key="color" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="w3o-IV-bLM" firstAttribute="centerY" secondItem="0FB-4d-dZK" secondAttribute="centerY" id="g3c-CG-NwC"/>
+                            <constraint firstItem="w3o-IV-bLM" firstAttribute="centerX" secondItem="0FB-4d-dZK" secondAttribute="centerX" id="woG-GZ-gw1"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="0FB-4d-dZK" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="95j-Wa-zz3"/>
+                <constraint firstItem="0FB-4d-dZK" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Kcl-Zv-VGq"/>
+                <constraint firstAttribute="bottom" secondItem="0FB-4d-dZK" secondAttribute="bottom" id="MKx-7a-jeM"/>
+                <constraint firstAttribute="trailing" secondItem="0FB-4d-dZK" secondAttribute="trailing" id="pOo-p1-zzm"/>
+            </constraints>
+            <size key="customSize" width="355" height="231"/>
+            <connections>
+                <outlet property="loadingIndicator" destination="w3o-IV-bLM" id="V7w-kE-Zt8"/>
+            </connections>
+            <point key="canvasLocation" x="286" y="-13"/>
+        </collectionViewCell>
+    </objects>
+</document>

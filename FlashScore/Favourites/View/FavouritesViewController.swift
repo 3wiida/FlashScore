@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Reachability
 
 protocol FavouriteViewControllerContract {
     func viewLeagues(leagues:[League])
@@ -18,8 +19,8 @@ class FavouritesViewController: UIViewController {
     
     @IBOutlet weak private var leaguesTableView: UITableView!
     @IBOutlet weak private var loadingIndicator: UIActivityIndicatorView!
-    @IBOutlet weak private var searchBar: UISearchBar!
     
+    @IBOutlet weak var searchBar: UISearchBar!
     private let presenter: FavouritesPresnterContract = FavouritesPresenter()
     
     private var leagues: [League] = []
@@ -58,7 +59,16 @@ class FavouritesViewController: UIViewController {
             }
         }
     }
-
+    
+    func isInternetAvailable() -> Bool {
+        do {
+            let reachability = try Reachability()
+            return reachability.connection != .unavailable
+        } catch {
+            print("Error checking reachability: \(error)")
+            return false
+        }
+    }
 }
 
 extension FavouritesViewController : UITableViewDelegate, UITableViewDataSource {
@@ -117,30 +127,24 @@ extension FavouritesViewController : UITableViewDelegate, UITableViewDataSource 
             present(alert, animated: true)
         }
     }
-    /*
-    func tableView(_ tableView: UITableView,
-                   commit editingStyle: UITableViewCell.EditingStyle,
-                   forRowAt indexPath: IndexPath) {
-        
-        if editingStyle == .delete {
-            let leagueToDelete = searchQuery.isEmpty ? leagues[indexPath.row] : searchResults[indexPath.row]
-            
-            presenter.deleteFromFavourites(leagueKey: leagueToDelete.league_key)
-            
-            if searchQuery.isEmpty {
-                leagues.remove(at: indexPath.row)
-            } else {
-                // Remove from filtered list and original list
-                if let originalIndex = leagues.firstIndex(where: { $0.league_key == leagueToDelete.league_key }) {
-                    leagues.remove(at: originalIndex)
-                }
-                searchResults.remove(at: indexPath.row)
-            }
-
-            tableView.deleteRows(at: [indexPath], with: .fade)
-            onDelete(msg: "\(leagueToDelete.league_name) removed from favourites.")
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let leagueDetailsVC = self.storyboard?.instantiateViewController(withIdentifier: "LeagueDetailsVC") as! LeagueDetailsCollectionViewController
+        leagueDetailsVC.sportType = sportType
+        leagueDetailsVC.league = searchQuery.isEmpty ? leagues[indexPath.row] : searchResults[indexPath.row]
+        if isInternetAvailable(){
+            leagueDetailsVC.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(leagueDetailsVC, animated: true)
+        }else {
+            let noInternerAlert = UIAlertController(
+                title: "No Internet Available",
+                message: "Please check your internet connection and try again",
+                preferredStyle: .alert
+            )
+            noInternerAlert.addAction(UIAlertAction(title: "OK", style: .default))
+            self.present(noInternerAlert, animated: true)
         }
-    }*/
+    }
 }
 
 extension FavouritesViewController: FavouriteViewControllerContract {
