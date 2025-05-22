@@ -349,8 +349,8 @@
 		CB7AA90E2DDA1EA200F322F3 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				CB258D3E2DDDFAFC0072D047 /* LoadingStateCell */,
 				CB258D382DDDE6240072D047 /* LeagueDetailsViewController */,
+				CB258D3E2DDDFAFC0072D047 /* LoadingStateCell */,
 				CB258D372DDDE5F40072D047 /* LeagueMatchCell */,
 				CB258D362DDDE5E10072D047 /* LeagueTeamCell */,
 				CB258D392DDDF39C0072D047 /* EmpyStateCell */,

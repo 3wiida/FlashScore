@@ -42,6 +42,17 @@ class OnboardingViewController: UIViewController {
     @IBAction func onNextBtnClicked(_ sender: Any) {
         if currentPage == slides.count - 1 {
             UserDefaults.standard.set(true, forKey: OnboardingViewController.hasCompletedOnboardingKey)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            if let tabBarVC = storyboard.instantiateViewController(withIdentifier: "tab") as? UITabBarController {
+                        
+                if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene, let window = windowScene.windows.first {
+                    window.rootViewController = tabBarVC
+                    window.makeKeyAndVisible()
+                            
+                    let options: UIView.AnimationOptions = .transitionFlipFromRight
+                    UIView.transition(with: window, duration: 0.5, options: options, animations: {}, completion: nil)
+                }
+            }
         } else {
             currentPage += 1
             let indexPath = IndexPath(row: currentPage, section: 0)
